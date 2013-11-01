@@ -23,7 +23,7 @@ Class DB_URL_Searcher extends CLI {
 		$this->file   = $file;
 		$this->search = $search;
 		$this->input  = file_get_contents( $file );
-		$this->regex  = '/([^\"\'\s,]*)?'. preg_quote($this->search) . '/';
+		$this->regex  = '/([^\"\'\s,\]\[><]*)?'. preg_quote($this->search) . '/';
 	}
 
 	function search() {
