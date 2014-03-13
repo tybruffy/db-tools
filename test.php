@@ -1,17 +1,23 @@
 <?php
 
-	// Dev
-	$_ENV["dev"]["url"] = "dev.stabilityinstitute.com";
-	$_ENV["dev"]["sql"] = "sta_dev.sql";
+	// $_ENV["input"]["url"]  = "jakedevelopment.com";
+	// $_ENV["output"]["url"] = "dev.jakedevelopment.com";
 
-	// Staging
-	$_ENV["staging"]["url"] = "staging.stabilityinstitute.com.s177422.gridserver.com";
-	$_ENV["staging"]["sql"] = "sta_staging.sql";
+	$_ENV["db_dir"] = __DIR__."/db/";
 
-	// Live
-	// $_ENV["live"]["url"] = "stabilityinstitute.com.s177422.gridserver.com";
-	// $_ENV["live"]["sql"] = "sta_live.sql";	
+	$_ENV["input"]["sql"]  = "input.sql";
+	$_ENV["output"]["sql"] = "output.sql";
 
-	// Live
-	$_ENV["live"]["url"] = "stabilityinstitute.com";
-	$_ENV["live"]["sql"] = "sta_live_dump.sql";
+	$_ENV["input"]["url"] = array(
+		"jakedevelopment.com",
+		"skilf.com",
+		"vdevcorp.com",
+		"kenneallycompany.com",
+	);
+
+	$_ENV["output"]["url"] = array(
+		"dev.jakedevelopment.com",
+		"dev.skilf.com",
+		"dev.vdevcorp.com",
+		"dev.kenneallycompany.com",
+	);

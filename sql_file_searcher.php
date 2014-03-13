@@ -3,7 +3,7 @@
 require_once('cli.php');
 require_once('test.php');
 
-Class DB_URL_Searcher extends CLI {
+Class SQL_File_Searcher extends CLI {
 	
 	private $file;
 	private $search;
@@ -39,6 +39,6 @@ Class DB_URL_Searcher extends CLI {
 }
 
 
-$searcher = new DB_URL_Searcher($argv[1], $argv[2]);
+$searcher = new SQL_File_Searcher($argv[1], $argv[2]);
 $searcher->search();
 

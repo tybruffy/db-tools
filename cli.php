@@ -5,7 +5,7 @@ Class CLI {
 
 	public function file_check( $file ) {
 		if (!file_exists($file)) {
-			die($this->message("{$_ENV[$from]['sql']} does not exist.  Please create the database dump before running this script.", "error"));
+			die($this->message("{$file} does not exist.  Please create the database dump before running this script.", "error"));
 		}
 		return true;
 	}
