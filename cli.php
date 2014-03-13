@@ -72,6 +72,5 @@ Class CLI {
 	public function log($message, $var = false, $filename = 'debug.log') {
 		$log = $var ? "$message\n".print_r($var, true)."\n\n" : "$message\n\n";
 		file_put_contents( 'debug.log', $log, FILE_APPEND );		
-	}	
-
+	}
 }
