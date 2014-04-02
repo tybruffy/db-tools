@@ -2,7 +2,7 @@
 <?php
 if ($argc <= 2 || in_array($argv[1], array('--help', '-help', '-h', '-?'))) {
 ?>
-usage: ./sql_convert.sh [input] [output] [env]
+usage: <?php echo $argv[0]; ?> [input] [output] [env]
 
 Usage requires at least an input and output name:
    input   Array containing input data. Array keys are:

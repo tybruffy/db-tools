@@ -28,7 +28,7 @@ location of the sql files.
 
 After that, just call the following from your command line:
 ```bash
-php -f sql_file_converter.php input output
+./sql_convert.sh input output
 ```
 
 ## Advanced Usage
@@ -55,5 +55,10 @@ $_ENV["output"] = array(
 );	
 ```
 ```bash
-php -f sql_file_converter.php input output
+./sql_convert.sh input output
+```
+
+You can also pass a thrid parameter to override the file that loads the environment variables:
+```bash
+./sql_convert.sh input output dev_env.php
 ```
