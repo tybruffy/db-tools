@@ -108,15 +108,3 @@ Class SQL_File_Converter extends CLI {
 	}
 
 }
-
-
-if (!$argv[1] || !$argv[2]) {
-	die("\033[0;31mPlease supply 2 arguments.  Your request should be made in the format: php -f db_url_update.php from_site to_site\033[0m.\n");
-} else {
-	if ($argv[3] == 'test')  {
-		require_once('test.php');
-	} else {
-		require_once('../load_environment.php');
-	}
-	new SQL_File_Converter($argv[1], $argv[2]);
-}
