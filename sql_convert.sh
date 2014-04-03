@@ -12,10 +12,10 @@ Usage requires at least an input and output name:
               sql: The filename to write to
               url: The url, or indexed array of URLs to replace with 
    env     The file containing the input/output arrays. (Optional)
-           By default looks for ../load_environment.php
+           By default looks for load_environment.php
 <?php
 } else {
-	$env_file = $argv[3] ? $argv[3] : '../load_environment.php';
+	$env_file = $argv[3] ? $argv[3] : 'load_environment.php';
 
 	if ( ! file_exists($env_file) ) {
 		echo "\033[0;31mFile {$env_file} does not exist.\n";
