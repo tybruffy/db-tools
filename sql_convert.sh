@@ -22,6 +22,7 @@ Usage requires at least an input and output name:
 	} else {
 		require_once($env_file);
 		require_once("classes/sql_file_converter.php");
-		new SQL_File_Converter($argv[1], $argv[2]);
+		$converter = new SQL_File_Converter($argv[1], $argv[2]);
+		$converter->convert();
 	}
 }

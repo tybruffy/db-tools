@@ -18,14 +18,13 @@ Class SQL_File_Converter extends CLI {
 	 * @param  array $output The array of data associated with the output file/urls.
 	 */
 	function __construct($input, $output) {
-		$this->file_check($_ENV["db_dir"].$_ENV[$input]['sql']);		
+		$this->file_check($_ENV["db_dir"].$_ENV[$input]['sql']);
 
 		$this->input   = $_ENV[$input];
 		$this->output  = $_ENV[$output];
 		$this->content = file_get_contents( $_ENV["db_dir"].$this->input['sql'] );
 		
 		$this->message("Reading contents of {$this->input[sql]}");
-		$this->do_replacement($this->input, $this->output);
 	}
 
 	/**
@@ -39,7 +38,7 @@ Class SQL_File_Converter extends CLI {
 	 * @param  array $input  The array of data associated with the input file/urls.
 	 * @param  array $output The array of data associated with the output file/urls.
 	 */
-	function do_replacement($input, $output) {		
+	function convert($input, $output) {		
 		if ( is_array($input["url"]) && is_array($output["url"]) ) {
 			$this->replcae_urls($input["url"], $output["url"]);
 		} elseif ( is_string($input["url"]) && is_string($output["url"]) ) {
