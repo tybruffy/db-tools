@@ -55,7 +55,7 @@ Class SQL_File_URL_Replacer extends CLI {
 	 */
 	public function replace() {
 		echo "Replacing \033[1;34m{$this->search}\033[0m with \033[1;34m{$this->replace}\033[0m \n";
-		$this->output = $this->find_serialized();
+		$this->output = $this->find_serialized( $this->input );
 		$this->replace_string( $this->output, null, $this->string_count );
 		$this->output_messages();
 	}
@@ -118,11 +118,13 @@ Class SQL_File_URL_Replacer extends CLI {
 	 * Searches the input string for URLs which are part of serialized arrays.  
 	 * It then uses it's callback function to replace the URL in the serialized string
 	 * with the new URL.
+	 *
+	 * @param  string $text The string to search through.
 	 * 
 	 * @return string The searched text with the serialized array updated.
 	 */
-	private function find_serialized() {
-		return preg_replace_callback( $this->array_regex, array($this, "replace_serialized"), $this->input);
+	private function find_serialized( $text ) {
+		return preg_replace_callback( $this->array_regex, array($this, "replace_serialized"), $text);
 	}
 
 	/**
