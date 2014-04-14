@@ -16,7 +16,6 @@ Usage requires at least an input and output name:
 <?php
 } else {
 	$env_file = $argv[3] ? $argv[3] : 'load_environment.php';
-
 	if ( ! file_exists($env_file) ) {
 		echo "\033[0;31mFile {$env_file} does not exist.\n";
 	} else {

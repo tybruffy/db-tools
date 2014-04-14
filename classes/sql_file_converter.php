@@ -18,11 +18,13 @@ Class SQL_File_Converter extends CLI {
 	 * @param  array $output The array of data associated with the output file/urls.
 	 */
 	function __construct($input, $output) {
-		$this->file_check($_ENV["db_dir"].$_ENV[$input]['sql']);
+		$this->directory = dirname(__DIR__).$_ENV["db_dir"];
+		
+		$this->file_check($this->directory.$_ENV[$input]['sql']);
 
 		$this->input   = $_ENV[$input];
 		$this->output  = $_ENV[$output];
-		$this->content = file_get_contents( $_ENV["db_dir"].$this->input['sql'] );
+		$this->content = file_get_contents( $this->directory.$this->input['sql'] );
 		
 		$this->message("Reading contents of {$this->input[sql]}");
 	}
@@ -38,16 +40,16 @@ Class SQL_File_Converter extends CLI {
 	 * @param  array $input  The array of data associated with the input file/urls.
 	 * @param  array $output The array of data associated with the output file/urls.
 	 */
-	function convert($input, $output) {		
-		if ( is_array($input["url"]) && is_array($output["url"]) ) {
-			$this->replcae_urls($input["url"], $output["url"]);
-		} elseif ( is_string($input["url"]) && is_string($output["url"]) ) {
-			$this->replace_url($input["url"], $output["url"]);
+	function convert() {		
+		if ( is_array($this->input["url"]) && is_array($this->output["url"]) ) {
+			$this->replcae_urls($this->input["url"], $this->output["url"]);
+		} elseif ( is_string($this->input["url"]) && is_string($this->output["url"]) ) {
+			$this->replace_url($this->input["url"], $this->output["url"]);
 		} else {
 			$message = sprintf(
 				'Please make sure that the URL properties of your input and output match.  The URL property of your input array is %s and the output array is %s.  Please make sure they are both arrays or both strings.',
-				gettype($input["url"]),
-				gettype($output["url"])
+				gettype($this->input["url"]),
+				gettype($this->output["url"])
 			);
 			$message = $this->message($message, "error", false);
 			die($message);
@@ -90,7 +92,7 @@ Class SQL_File_Converter extends CLI {
 	 */
 	private function save() {
 		echo "Writing modified SQL file to \033[1;34m{$this->output[sql]}\033[0m.\n";
-		$write_status = file_put_contents( $_ENV["db_dir"].$this->output['sql'], $this->content );
+		$write_status = file_put_contents( $this->directory.$this->output['sql'], $this->content );
 		$this->save_messages( $write_status );
 	}
 
